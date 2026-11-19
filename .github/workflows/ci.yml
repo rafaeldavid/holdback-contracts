@@ -1,0 +1,71 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+    tags: ['phase-one-*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  # The contract sources must stay byte-identical to their commit in the holdback repository.
+  # A change under contracts/src fails here: this repository carries the code for reading and quoting, not for edits.
+  fidelity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # holdback commit d621291e, the version the fix review read.
+      - name: contracts/src tree hash
+        run: |
+          actual=$(git rev-parse HEAD:contracts/src)
+          expected=c4edcfb1185a34f5a205d9170e0ae690c758c157
+          echo "contracts/src tree $actual, expected $expected"
+          test "$actual" = "$expected"
+
+  # The Foundry suites, as the holdback repository runs them (job `contracts` in its ci.yml).
+  contracts:
+    name: contracts (forge test)
+    runs-on: ubuntu-latest
+    # A healthy run takes about 3 minutes in holdback's CI; a hang fails here instead of at GitHub's 6-hour default.
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Only the repositories contracts/remappings.txt maps, at depth 1. `--recursive` clones about 100 nested
+      # test dependencies of commerce-payments and has hung CI for more than 40 minutes.
+      - name: submodules
+        timeout-minutes: 5
+        run: |
+          git submodule update --init --depth 1 contracts/lib/commerce-payments
+          git -C contracts/lib/commerce-payments submodule update --init --depth 1 lib/forge-std lib/permit2 lib/solady lib/spend-permissions
+          git -C contracts/lib/commerce-payments/lib/spend-permissions submodule update --init --depth 1 lib/openzeppelin-contracts
+      - uses: foundry-rs/foundry-toolchain@dba66c27052e63476d886f22216e119ba7e615bf # v1
+        with:
+          version: v1.0.0
+      - name: forge build
+        working-directory: contracts
+        run: forge build
+      - name: forge test
+        working-directory: contracts
+        run: forge test
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: "false"

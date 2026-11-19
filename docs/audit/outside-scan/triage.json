@@ -1,0 +1,495 @@
+{
+  "about": "Crow's triage of each finding of Zero Cool's scan (2026-11-18) and fix review (2026-11-19), keyed by the first 8 characters of the finding's artifact ID. rating: Crow's own severity. outcome: confirmed (a new defect), known (already in Crow's own records), not a defect. status: what Crow did. review: the fix review's verdict on the change that answers the finding; empty where no change answers it. table.mjs renders docs/audit/outside-scan.md's table from this file and the redacted data; tests/outside-scan.test.ts checks that every finding has a row.",
+  "findings": {
+    "30145111": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "deploy check",
+      "note": "A contract cannot know its chain's slot time; the deploy script sets the margin for the chain.",
+      "review": ""
+    },
+    "67531304": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (e): a primary's decision must carry empty beacon fields, and an escalation decision no appeal ground.",
+      "review": "closed"
+    },
+    "15b54cd1": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Same cause as a0cd835b.",
+      "review": ""
+    },
+    "3ed7c89a": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Its High part, the key on a refunded deal, was fixed before the scan (PR 125); the limit is as a0cd835b.",
+      "review": ""
+    },
+    "7a191c3c": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Same cause as a0cd835b.",
+      "review": ""
+    },
+    "a0cd835b": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "known-issues.md, H-2 limit. Closing it on chain needs a commit and reveal of the key, a new protocol step (D26).",
+      "review": ""
+    },
+    "30c0020e": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The deal goes to the fallback or the default its terms name. The bound the docs stated was too narrow (see da30d5b8) and is corrected.",
+      "review": ""
+    },
+    "696fcaca": {
+      "rating": "Informational",
+      "outcome": "confirmed",
+      "status": "open",
+      "note": "known-issues.md OS-1. Crow's operators post every delivery on its own and carry one only in an accept (T-526); the contract path is unchanged, so a direct relayer can still carry one.",
+      "review": "open"
+    },
+    "768cd52b": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Duplicate of 30c0020e.",
+      "review": ""
+    },
+    "da30d5b8": {
+      "rating": "Informational",
+      "outcome": "confirmed",
+      "status": "accepted limit",
+      "note": "known-issues.md OS-2. The scan marks it a duplicate of 696fcaca. The docs' bound for contract signers is corrected.",
+      "review": ""
+    },
+    "1661b40c": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "deploy check",
+      "note": "Needs a deployer's mistake. deploy-sepolia.sh --check compares the deployed code with the record.",
+      "review": ""
+    },
+    "4989a790": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "fixed in part",
+      "note": "Change (a): the constructor asks the beacon for a round and refuses with BadBeacon. The residual is bf7f2cb1.",
+      "review": "closed in part"
+    },
+    "babd6d40": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "No lower bound is needed; the deploy script sets the value for the chain.",
+      "review": ""
+    },
+    "3a373655": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (b): the pairing gas is set at deploy, with a floor of 102,900 gas.",
+      "review": "closed"
+    },
+    "93457d96": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "EIP-2537 makes the precompile check the subgroup. A mainnet gate item runs the test vectors on every client.",
+      "review": ""
+    },
+    "f90d53c1": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (b).",
+      "review": "closed"
+    },
+    "069b8a2b": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "No deal can name a time before the beacon's genesis.",
+      "review": ""
+    },
+    "0ac9ec26": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (c): a call that ran short of gas reverts NotEnoughGas, not InvalidSignature.",
+      "review": "closed"
+    },
+    "0b642051": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The cost is the sender's own gas.",
+      "review": ""
+    },
+    "2e8e2fd3": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (c).",
+      "review": "closed"
+    },
+    "348991e3": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 93457d96.",
+      "review": ""
+    },
+    "36ee77e9": {
+      "rating": "Informational",
+      "outcome": "not a defect",
+      "status": "not a defect",
+      "note": "Unreachable.",
+      "review": ""
+    },
+    "6fd22a03": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 069b8a2b.",
+      "review": ""
+    },
+    "7d33e4ab": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Unreachable through HoldbackRules.",
+      "review": ""
+    },
+    "b1a37663": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (b).",
+      "review": "closed"
+    },
+    "cdae1d18": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The cost is the sender's own gas.",
+      "review": ""
+    },
+    "d29097f1": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 0b642051.",
+      "review": ""
+    },
+    "008bef5f": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (d): funding refuses terms whose three dispute fields are not zero.",
+      "review": "closed"
+    },
+    "a1c9b4f1": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (d).",
+      "review": "closed"
+    },
+    "3dec9493": {
+      "rating": "Informational",
+      "outcome": "confirmed",
+      "status": "accepted limit",
+      "note": "known-issues.md OS-3. Needs two contract wallets that accept one shared key. The signed settlement gains the signer's address in the rebuilt contracts.",
+      "review": ""
+    },
+    "f6acda91": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "fixed in the new version",
+      "note": "Change (e).",
+      "review": "closed"
+    },
+    "90744dd1": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "known-issues.md DS-1. Bounded by the parties' own choice of primary adjudicator.",
+      "review": ""
+    },
+    "e7131dba": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 90744dd1.",
+      "review": ""
+    },
+    "1aea5848": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Fixed before the scan; the residual adds nothing to DS-1.",
+      "review": ""
+    },
+    "2dd4fb70": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Needs three colluding proposer slots. A mainnet gate item measures it.",
+      "review": ""
+    },
+    "3db0ab8b": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 2dd4fb70.",
+      "review": ""
+    },
+    "8a875efc": {
+      "rating": "Informational",
+      "outcome": "confirmed",
+      "status": "open",
+      "note": "known-issues.md OS-4. The docs now state n - 2 known draws for a run of n slots; the design change waits for the mainnet gate.",
+      "review": "open"
+    },
+    "cdf06aaa": {
+      "rating": "Informational",
+      "outcome": "confirmed",
+      "status": "fixed in the new version",
+      "note": "Change (f): the comment on the escrow expiry's 48-bit bound is corrected.",
+      "review": "fixed"
+    },
+    "5c7d4a2f": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Phase one has no appeals and no bonds (D57, ADR-0031). Bounded by one deal's price and fee.",
+      "review": ""
+    },
+    "9570b0ce": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 5c7d4a2f.",
+      "review": ""
+    },
+    "e33be4dc": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 5c7d4a2f. A per-deal cap is a mainnet gate item (ADR-0034).",
+      "review": ""
+    },
+    "051d0f3e": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Both parties sign the payout addresses.",
+      "review": ""
+    },
+    "0987054c": {
+      "rating": "Informational",
+      "outcome": "not a defect",
+      "status": "not a defect",
+      "note": "",
+      "review": ""
+    },
+    "0f01bd19": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "By design.",
+      "review": ""
+    },
+    "25127f2a": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "By design: both parties sign the late-work settlement.",
+      "review": ""
+    },
+    "2adb1339": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Escrow behaviour; nothing can use the amount.",
+      "review": ""
+    },
+    "49c807c3": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 051d0f3e.",
+      "review": ""
+    },
+    "5a998b98": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The parties choose the window (D31).",
+      "review": ""
+    },
+    "5e3efbe5": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The seller protects itself by posting its delivery (D32).",
+      "review": ""
+    },
+    "6d458080": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "A token issuer's control over its own token; out of scope.",
+      "review": ""
+    },
+    "714ab9c7": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "A trust assumption on the token.",
+      "review": ""
+    },
+    "72ae5dbd": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "A wallet deploys before it funds; the agent docs say so.",
+      "review": ""
+    },
+    "8369430c": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "By design (TA-1).",
+      "review": ""
+    },
+    "93eba475": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The parties choose the adjudicators; bonds and appeals return later.",
+      "review": ""
+    },
+    "a4660656": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As aeb9c2ff.",
+      "review": ""
+    },
+    "a870d5ef": {
+      "rating": "Informational",
+      "outcome": "not a defect",
+      "status": "not a defect",
+      "note": "",
+      "review": ""
+    },
+    "aeb9c2ff": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The contract sees only hashes; the buyer's own check refuses such a delivery.",
+      "review": ""
+    },
+    "aef7f785": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Anyone may trigger a timeout; one live party is enough.",
+      "review": ""
+    },
+    "b6806df8": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The wallet's delegate decides.",
+      "review": ""
+    },
+    "c1a83183": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The prepare call cannot reach money.",
+      "review": ""
+    },
+    "c39d470a": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "The case goes to the fallback or the default.",
+      "review": ""
+    },
+    "d2ee602a": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "ERC-8183 is a draft.",
+      "review": ""
+    },
+    "e42f2687": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "As 714ab9c7.",
+      "review": ""
+    },
+    "e30c079b": {
+      "rating": "Medium",
+      "outcome": "known",
+      "status": "fixed off chain",
+      "note": "Operator code, fixed on main before the scan (T-409, PR 512).",
+      "review": ""
+    },
+    "542b89b8": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "fixed off chain",
+      "note": "Operator code, fixed on main before the scan (T-409, PR 512).",
+      "review": ""
+    },
+    "83985e09": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "fixed off chain",
+      "note": "Adjudicator service code: it now keeps its judged result before it signs, so a restart calls no judge again (T-530, PR 652, deployed 2026-11-18).",
+      "review": ""
+    },
+    "c65cd6d5": {
+      "rating": "Low",
+      "outcome": "known",
+      "status": "fixed off chain",
+      "note": "Operator code, fixed on main before the scan (T-409, PR 512).",
+      "review": ""
+    },
+    "44e8731f": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "Deferred to T-227, before mainnet.",
+      "review": ""
+    },
+    "ad2ddc6d": {
+      "rating": "Informational",
+      "outcome": "known",
+      "status": "accepted limit",
+      "note": "All five contracts are exact matches on Sourcify.",
+      "review": ""
+    },
+    "bf7f2cb1": {
+      "rating": "Informational",
+      "outcome": "confirmed",
+      "status": "open",
+      "note": "New in the fix review: the residual of change (a). Only a deployer's mistake reaches it, and deploy-sepolia.sh rules it out by the beacon's code hash.",
+      "review": "new"
+    }
+  }
+}
