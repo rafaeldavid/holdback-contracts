@@ -46,7 +46,7 @@ Result: 539 tests in 73 suites, 539 passed, 0 failed and 0 skipped [measured: CI
 
 - **An automated scan** by Zero Cool, a security firm, read the five source files of the deployed version (`27ab44e8`) on 2026-11-18. It reported 69 findings: 9 Medium, 9 Low and 51 Informational, none Critical or High. 65 were already in Crow's own records [documented: `docs/audit/outside-scan.md`].
 - **An automated fix review** by the same firm read the six changes at `d621291e`, the version here, on 2026-11-19. Five changes close their findings. The sixth, the beacon probe, closes its finding in part, and the review found one new Informational finding [documented: the same page].
-- **Open after both:** three Informational findings, `696fcaca`, `8a875efc` and `bf7f2cb1`. The first two stay known limits in phase one, and the next version fixes both (holdback D85). The third is open (`docs/audit/known-issues.md`, OS-6).
+- **Open after both:** three Informational findings, `696fcaca`, `8a875efc` and `bf7f2cb1`. The first two stay known limits in phase one, and the next version fixes both (holdback D85). The third is open (`docs/audit/outside-scan.md`, row `bf7f2cb1`; [holdback `main` `docs/audit/known-issues.md`](https://github.com/rafaeldavid/holdback/blob/d9da8a00/docs/audit/known-issues.md) OS-6, a row the copy here predates).
 - **Crow's own reviews:** the audit pages record them, with Slither 0.11.6 and Aderyn 0.6.8 runs (`docs/audit/functions.md`, `docs/audit/README.md`).
 - **Not done:** an audit by human reviewers. Neither automated review is one, and nothing here says the contracts are secure.
 
